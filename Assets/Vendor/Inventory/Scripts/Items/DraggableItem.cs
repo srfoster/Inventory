@@ -14,13 +14,13 @@ public class DraggableItem : Item {
 		}
 	}
 	
-	void Drag()
+	virtual protected void Drag()
 	{
 		SetHidden(true);
 		getInventory().SetDragged(gameObject);
 	}
 	
-	void Drop()
+	virtual protected void Drop()
 	{
 		SetActive(false);
 		getInventory().SetDragged(null);
@@ -28,7 +28,7 @@ public class DraggableItem : Item {
 
 	    if(getInventory().MouseOverInventory()) // If we're back in the inventory
 	    {
-        	SetHidden(false);
+			DroppedOnInventory(Input.mousePosition);
         }else{ // If we're in the world
         	Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 	    	RaycastHit rayhit = new RaycastHit();
@@ -45,4 +45,9 @@ public class DraggableItem : Item {
 		SetHidden(false);
 	}
 		
+	virtual public void DroppedOnInventory(Vector3 mousePosition)
+	{
+		SetHidden(false);	
+	}
+	
 }

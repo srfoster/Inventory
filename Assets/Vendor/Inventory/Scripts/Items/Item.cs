@@ -57,7 +57,7 @@ public class Item : MonoBehaviour {
 		this.gameObject.SetActiveRecursively(false);
 	}
 	
-	public void ClickedInInventory()
+	virtual public void ClickedInInventory()
 	{
 		Debug.Log("Clicked...");
 	}
